@@ -12,14 +12,12 @@ ports:
 tasks:  
   - init: >
       nvm install &&
-      npm install -g pnpm &&
-      pnpm install
+      npm install -g pnpm @biomejs/biome
     command: >
       nvm install &&
-      npm install -g pnpm &&
-      pnpm install
+      npm install -g pnpm @biomejs/biome
 
 vscode:
   extensions:
-    - esbenp.prettier-vscode
     - denoland.vscode-deno
+    - biomejs.biome
