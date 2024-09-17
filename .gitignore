@@ -128,3 +128,21 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Deno
+coverage
+
+# NPM packages
+.npmrc
+*.mjs
+node_modules
+package.json
+package-lock.json
+pnpm-lock.yaml
+bun.lockb
+
+# Vercel
+.vercel
+
+# Docs
+docs
