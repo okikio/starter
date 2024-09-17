@@ -2,7 +2,7 @@
 /** @jsxImportSource @hono/hono/jsx */
 import type { FC } from "@hono/hono/jsx";
 
-export interface WeatherProps {
+export interface MoviesProps {
   name: string;
   longitude: number;
   latitude: number;
@@ -12,10 +12,10 @@ export interface WeatherProps {
  * Function to fetch the weather data from the API.
  * @returns The weather data as a promise.
  */
-async function fetchWeatherData({
+async function fetchMovieData({
   latitude = 43.7001,
   longitude = -79.4163,
-}: Partial<WeatherProps> = {}): Promise<WeatherApiResponse> {
+}: Partial<MoviesProps> = {}): Promise<unknown> {
   const response = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
   );
@@ -29,17 +29,13 @@ async function fetchWeatherData({
  * A JSX component that renders the weather data.
  * @returns The JSX element to be rendered.
  */
-export const WeatherComponent: FC<WeatherProps> = async (props) => {
+export const WeatherComponent: FC<MoviesProps> = async (props) => {
   const name = props.name ?? "Toronto";
-  const result = await fetchWeatherData(props);
-  const { current: weather } = result;
+  const result = await fetchMovieData(props);
 
   return (
     <div>
-      <h2>Current Weather in {name}</h2>
-      <p>Time: {new Date(weather.time).toLocaleString()}</p>
-      <p>Temperature: {weather.temperature_2m}°C</p>
-      <p>Wind Speed: {weather.wind_speed_10m} km/h</p>
+      <h2>Movies in {name}</h2>
     </div>
   );
 };
